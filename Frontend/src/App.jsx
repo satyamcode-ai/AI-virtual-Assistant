@@ -7,7 +7,7 @@ import Customize from "./Pages/Customize.jsx";
 import Customize2 from "./Pages/Customize2.jsx";
 import Home from "./Pages/Home.jsx";
 import { useContext } from "react";
-import { UserDataContext } from "./context/userContext.jsx";
+import { UserDataContext } from "./context/UserContext.jsx";
 import Voicemodel from "./Pages/Voicemodel.jsx";
 
 const App = () => {

@@ -65,7 +65,7 @@ const UserContext = ({ children }) => {
     setprevPrompts((prev) => [...prev, input]);
   };
 
-  const serverUrl = "http://localhost:3000";
+  const serverUrl = "https://ai-virtual-assistant-backend-i6wy.onrender.com";
   const [userData, setuserData] = useState(null);
   const [frontendImage, setfrontendImage] = useState(null);
   const [backendImage, setbackendImage] = useState(null);

@@ -6,7 +6,7 @@ import { BiLogOut } from "react-icons/bi";
 import { RiMicAiLine, RiChatNewLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { UserDataContext } from "../context/userContext";
+import { UserDataContext } from "../context/UserContext";
 
 const CornerSidebar = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();

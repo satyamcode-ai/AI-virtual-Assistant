@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { UserDataContext } from "../context/userContext";
+import { UserDataContext } from "../context/UserContext";
 import VoicemodelSidebar from "../components/VoicemodelSidebar";
 import loader from "../assets/user.gif";
 import responseLoader from "../assets/ai.gif";

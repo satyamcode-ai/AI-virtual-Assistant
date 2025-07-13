@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { UserDataContext } from "../context/userContext";
+import { UserDataContext } from "../context/UserContext";
 import CornerSidebar from "../components/CollapsibleNav";
 import { FaLightbulb, FaComments, FaCode, FaCompass } from "react-icons/fa";
 import { IoSendSharp, IoStopCircleSharp } from "react-icons/io5"; // Send & Stop Icons

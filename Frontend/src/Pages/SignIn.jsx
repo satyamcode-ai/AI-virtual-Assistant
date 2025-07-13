@@ -3,7 +3,7 @@ import axios from "axios";
 import authBg from "../assets/authBg.png"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { UserDataContext } from "../context/userContext";
+import { UserDataContext } from "../context/UserContext";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);

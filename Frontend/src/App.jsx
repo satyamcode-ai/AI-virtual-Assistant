@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./index.css";
-import SignUp from "./pages/SignUp.jsx";
-import SignIn from "./pages/SignIn.jsx";
+import SignUp from "./Pages/SignUp.jsx";
+import SignIn from "./Pages/SignIn.jsx";
 import Customize from "./Pages/Customize.jsx";
 import Customize2 from "./Pages/Customize2.jsx";
 import Home from "./Pages/Home.jsx";

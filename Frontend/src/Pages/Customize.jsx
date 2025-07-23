@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import Card from "../components/card";
+import Card from "../components/Card.jsx";
 import image1 from "../assets/image1.jpg";
 import image2 from "../assets/image2.gif";
 import image3 from "../assets/image6.png";

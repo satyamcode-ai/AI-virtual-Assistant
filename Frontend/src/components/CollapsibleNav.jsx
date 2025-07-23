@@ -4,13 +4,15 @@ import { IoMdClose } from "react-icons/io";
 import { MdArrowBackIos } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
 import { RiMicAiLine, RiChatNewLine } from "react-icons/ri";
+import { MdHistory } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserDataContext } from "../context/UserContext";
 
 const CornerSidebar = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
-  const { userData, serverUrl, setuserData,resetChat } = useContext(UserDataContext);
+  const { userData, serverUrl, setuserData, resetChat } =
+    useContext(UserDataContext);
 
   const handleLogOut = async () => {
     try {
@@ -25,10 +27,20 @@ const CornerSidebar = ({ isOpen, setIsOpen }) => {
     }
   };
 
+  const navigateToHistory = async () => {
+    try {
+      navigate("/history");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // Reusable classes
-  const menuItemClass = "flex items-center gap-2 text-amber-50 text-sm hover:text-amber-100 cursor-pointer transition text-[15px] mb-1";
+  const menuItemClass =
+    "flex items-center gap-2 text-amber-50 text-sm hover:text-blue-400 cursor-pointer transition text-[15px] mb-1";
   const sectionSpacing = "mb-10";
-  const labelClass = "text-amber-50 text-sm hover:text-amber-100 cursor-pointer transition text-[16px] ";
+  const labelClass =
+    "text-amber-50 text-sm hover:text-blue-400 cursor-pointer transition text-[16px] ";
 
   return (
     <div
@@ -48,7 +60,6 @@ const CornerSidebar = ({ isOpen, setIsOpen }) => {
             <FiMenu size={22} className="text-white" />
           )}
         </button>
-        
       </div>
 
       {/* Assistant Image */}
@@ -77,25 +88,34 @@ const CornerSidebar = ({ isOpen, setIsOpen }) => {
 
       {/* Menu Items */}
       <div className="flex flex-col gap-4 mt-2 flex-1">
-
         <div
-          className={`${menuItemClass} justify-center gap-3 mr-2`}
+          className={`${menuItemClass} ml-0.5`}
           onClick={() => navigate("/voicemodel")}
         >
-          <RiMicAiLine size={20} />
-          {isOpen && <span>Switch to Speech Model</span>}
+          <RiMicAiLine size={20} className="mr-1" />
+          {isOpen && <span>Speech Model</span>}
         </div>
-        <div className={`${menuItemClass} ml-1`} onClick={() => navigate("/customize")}>
+        <div
+          className={`${menuItemClass} ml-1`}
+          onClick={() => navigate("/customize")}
+        >
           <MdArrowBackIos size={20} />
           {isOpen && <span>Customize Again</span>}
         </div>
 
-        <div className={`${menuItemClass} ml-0.5`} onClick={resetChat }>
-          <RiChatNewLine size={20} />
+        <div className={`${menuItemClass} ml-0.5`} onClick={resetChat}>
+          <RiChatNewLine size={20} className="mr-0.5" />
           {isOpen && <span>New Chat</span>}
         </div>
 
-        
+        {/* History */}
+        <div
+          className={`${menuItemClass} ml-0.5`}
+          onClick={navigateToHistory}
+        >
+          <MdHistory size={20} className="mr-0.5"/>
+          {isOpen && <span>Recent</span>}
+        </div>
       </div>
 
       {/* Logout */}

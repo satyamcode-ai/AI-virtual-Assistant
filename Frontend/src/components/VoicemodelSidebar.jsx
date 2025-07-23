@@ -5,6 +5,7 @@ import { MdArrowBackIos } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { MdHistory } from "react-icons/md";
 import { TbSwitchHorizontal } from "react-icons/tb";
 import axios from "axios";
 import { UserDataContext } from "../context/UserContext";
@@ -26,11 +27,19 @@ const VoicemodelSidebar = ({ isOpen, setIsOpen }) => {
     }
   };
 
+  const navigateToHistory = async () => {
+    try {
+      navigate("/history-voice-model");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // Reusable classes
   const menuItemClass =
-    "flex items-center gap-2 text-amber-50 hover:text-amber-100 cursor-pointer transition text-[15px] mb-1";
+    "flex items-center gap-2 text-amber-50 hover:text-blue-400 cursor-pointer transition text-[15px] mb-1";
   const labelClass =
-    "text-amber-50 text-sm hover:text-amber-100 cursor-pointer transition text-[15px]";
+    "text-amber-50 text-sm hover:text-blue-400 cursor-pointer transition text-[15px]";
 
   return (
     <div
@@ -94,6 +103,11 @@ const VoicemodelSidebar = ({ isOpen, setIsOpen }) => {
             </span>
           )}
         </button>
+        {/* History */}
+            <div className={`${menuItemClass}`} onClick={navigateToHistory}>
+              <MdHistory size={20} />
+              {isOpen && <span>Recent</span>}
+            </div>
       </div>
 
       <div className={`${menuItemClass} lg:mb-15 mb-18 ml-2`} onClick={handleLogOut}>

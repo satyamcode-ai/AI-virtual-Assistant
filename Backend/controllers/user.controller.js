@@ -95,10 +95,17 @@ export const askToAssistant = async (req, res) => {
           response: removeSymbols(`Current date is ${moment().format("YYYY MM DD")}`),
         });
       case "get_time":
+        const now = new Date();
+        const timeString = now.toLocaleTimeString("en-IN", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+        timeZone: "Asia/Kolkata" // adjust to your local timezone
+    });
         return res.json({
           type,
           userInput: removeSymbols(userInput),
-          response: removeSymbols(`Current time is ${moment().format("hh mm A")}`),
+          response: removeSymbols(`Current time is ${timeString}`),
         });
       case "get_day":
         return res.json({

@@ -15,7 +15,7 @@ connectDb()
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
-    origin: "https://ai-virtual-assistant-frontend-3k8r.onrender.com",
+    origin: "http://localhost:5173",
     credentials: true
 }))
 

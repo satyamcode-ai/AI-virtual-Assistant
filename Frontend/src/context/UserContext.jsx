@@ -5,6 +5,7 @@ import main from "../config/gemini";
 export const UserDataContext = createContext();
 
 const UserContext = ({ children }) => {
+  const timeouts = useRef([]);
   const stopGeneratingRef = useRef(false);
   const [input, setinput] = useState("");
   const [recentPrompt, setrecentPrompt] = useState("");
@@ -12,25 +13,47 @@ const UserContext = ({ children }) => {
   const [showResult, setshowResult] = useState(false);
   const [loading, setloading] = useState(false);
   const [resultData, setresultData] = useState("");
-  const [voiceGender, setVoiceGender] = useState("Male");
-
-
+  const [voiceGender, setVoiceGender] = useState("Female");
+  
   const resetChat = () => {
     setresultData([]);
     setloading(false);
   };
 
+  useEffect(() => {
+  // Load history on mount
+  const savedPrompts = JSON.parse(localStorage.getItem("userPromptHistory"));
+  if (savedPrompts) {
+    setprevPrompts(savedPrompts);
+  }
+}, []);
+
+useEffect(() => {
+  // Save history whenever prevPrompts changes
+  localStorage.setItem("userPromptHistory", JSON.stringify(prevPrompts));
+}, [prevPrompts]);
+
+
   const setStopGenerating = (value) => {
   stopGeneratingRef.current = value;
+  if (value) {
+    // Clear all pending timeouts
+    timeouts.current.forEach(clearTimeout);
+    timeouts.current = [];
+  }
 };
+
 
 
   const delayPara = (index, nextWord) => {
-  setTimeout(() => {
+  const timeoutId = setTimeout(() => {
     if (stopGeneratingRef.current) return;
     setresultData((prev) => prev + nextWord);
   }, 75 * index);
+
+  timeouts.current.push(timeoutId);
 };
+
 
 
   const onSent = async (prompt) => {
@@ -62,10 +85,14 @@ const UserContext = ({ children }) => {
     setrecentPrompt(input);
     setloading(false);
     setinput("");
-    setprevPrompts((prev) => [...prev, input]);
+    setprevPrompts((prev) => [
+  ...prev,
+  { text: input, timestamp: new Date().toISOString() },
+]);
+
   };
 
-  const serverUrl = "https://ai-virtual-assistant-backend-i6wy.onrender.com";
+  const serverUrl = "http://localhost:3000";
   const [userData, setuserData] = useState(null);
   const [frontendImage, setfrontendImage] = useState(null);
   const [backendImage, setbackendImage] = useState(null);

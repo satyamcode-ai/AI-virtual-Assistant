@@ -73,8 +73,8 @@ const Home = () => {
                   {prompts.map((prompt, idx) => (
                     <div
                       key={idx}
-                      className="flex flex-col justify-between bg-white/10 backdrop-blur-md text-white p-6 rounded-xl shadow-lg 
-                      min-h-[180px] w-full sm:w-[48%] lg:w-[20%] hover:scale-[1.02] transition-all duration-300"
+                      className="flex-col justify-between bg-white/10 backdrop-blur-md text-white p-6 rounded-xl shadow-lg 
+                      min-h-[180px] w-full sm:w-[48%] lg:w-[20%] hover:scale-[1.02] transition-all duration-300 hidden sm:flex"
                     >
                       <p className="text-left text-md">{prompt.text}</p>
                       <span className="text-xl bg-white/20 text-white p-2 rounded-full self-end mt-4">

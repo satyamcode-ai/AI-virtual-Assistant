@@ -33,7 +33,7 @@ object like this:
 - "instagram_open": if user wants to open Instagram.
 - "facebook_open": if user wants to open facebook.
 - "weather-show": if user wants to know weather
-- "get_time": if user asks for current time.
+- "get_time": if user asks for current time in India.
 - "get_date": if user asks for today's date.
 - "get_day": if user asks what day it is.
 - "get_month": if user asks for the current month.
@@ -64,6 +64,7 @@ now your userInput- ${command}
         }
       }
     );
+    
 
     return response?.data?.candidates?.[0]?.content?.parts?.[0]?.text ||
       response?.data?.candidates?.[0]?.contents?.[0]?.parts?.[0]?.text;

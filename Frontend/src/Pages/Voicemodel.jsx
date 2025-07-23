@@ -43,7 +43,7 @@ const Voicemodel = () => {
       const voices = window.speechSynthesis.getVoices();
 
       const selectedVoice = voices.find((v) =>
-        voiceGender === "female"
+        voiceGender === "male"
           ? v.name.toLowerCase().includes("female")
           : v.name.toLowerCase().includes("male")
       );
@@ -136,6 +136,18 @@ const Voicemodel = () => {
       const transcript = e.results[e.results.length - 1][0].transcript;
       console.log("Transcript:", transcript);
 
+      const existingHistory =
+        JSON.parse(localStorage.getItem("voicePromptHistory")) || [];
+      const newEntry = {
+        text: transcript,
+        timestamp: new Date().toISOString(),
+      };
+      existingHistory.push(newEntry);
+      localStorage.setItem(
+        "voicePromptHistory",
+        JSON.stringify(existingHistory)
+      );
+
       if (
         transcript
           .toLowerCase()
@@ -205,18 +217,20 @@ const Voicemodel = () => {
               />
             </div>
             {assistantResponse && (
-              <p className="text-amber-50 text-center ml-15 lg:ml-0">{assistantResponse}</p>
+              <p className="text-amber-50 text-center ml-15 lg:ml-0">
+                {assistantResponse}
+              </p>
             )}
           </div>
         </div>
         <br />
         <footer className="w-full text-center border-t border-gray-700 mt-4">
-          <p className="lg:text-[13px] text-xs text-transparent bg-gradient-to-r from-blue-800 to-pink-400 bg-clip-text lg:ml-290 ml-13">
+          <div className="lg:text-[13px] text-xs text-transparent bg-gradient-to-r from-blue-800 to-pink-400 bg-clip-text lg:ml-290 ml-13">
             © 2025 Speech Model 4.0 | All rights reserved
-            <div className="block lg:hidden">
+            <p className="block lg:hidden">
               Built with <span>❤️</span> by Satyam Singh
-            </div>
-          </p>
+            </p>
+          </div>
         </footer>
       </main>
     </div>

@@ -15,7 +15,7 @@ connectDb()
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
-    origin: "https://ai-virtual-assistant-frontend-ngf5.onrender.com",
+    origin: "https://ai-virtual-assistant-ebon.vercel.app",
     credentials: true
 }))
 

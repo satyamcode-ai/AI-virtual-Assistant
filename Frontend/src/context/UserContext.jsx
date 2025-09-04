@@ -92,7 +92,7 @@ useEffect(() => {
 
   };
 
-  const serverUrl = "https://ai-virtual-assistant-backend-9y7e.onrender.com";
+  const serverUrl = "https://ai-virtual-assistant-j7qg.vercel.app/";
   const [userData, setuserData] = useState(null);
   const [frontendImage, setfrontendImage] = useState(null);
   const [backendImage, setbackendImage] = useState(null);

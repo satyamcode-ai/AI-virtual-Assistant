@@ -19,6 +19,9 @@ app.use(cors({
     credentials: true
 }))
 
+app.get("/",(req,res)=>{
+    res.send("Server is Live ....")
+})
 app.use("/api/auth",authRouter)
 app.use("/api/user",userRouter)
 

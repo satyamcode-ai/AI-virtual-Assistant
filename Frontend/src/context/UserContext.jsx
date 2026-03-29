@@ -92,7 +92,7 @@ useEffect(() => {
 
   };
 
-  const serverUrl = "https://ai-virtual-assistant-backend-9y7e.onrender.com";
+  const serverUrl = "http://localhost:3000";
   const [userData, setuserData] = useState(null);
   const [frontendImage, setfrontendImage] = useState(null);
   const [backendImage, setbackendImage] = useState(null);

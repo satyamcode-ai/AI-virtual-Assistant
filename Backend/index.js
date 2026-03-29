@@ -15,11 +15,21 @@ connectDb()
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
+<<<<<<< HEAD
     origin: "http://localhost:5173/",
     credentials: true
 }))
 
 app.get("/",(req,res)=>{res.send("Server is Live...")})
+=======
+    origin: "https://ai-virtual-assistant-ebon.vercel.app",
+    credentials: true
+}))
+
+app.get("/",(req,res)=>{
+    res.send("Server is Live ....")
+})
+>>>>>>> 87bbb199c5ada5576202365e63b1ec2fde67e861
 app.use("/api/auth",authRouter)
 app.use("/api/user",userRouter)
 

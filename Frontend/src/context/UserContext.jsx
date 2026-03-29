@@ -92,7 +92,11 @@ useEffect(() => {
 
   };
 
+<<<<<<< HEAD
   const serverUrl = "http://localhost:3000";
+=======
+  const serverUrl = "https://ai-virtual-assistant-j7qg.vercel.app";
+>>>>>>> 87bbb199c5ada5576202365e63b1ec2fde67e861
   const [userData, setuserData] = useState(null);
   const [frontendImage, setfrontendImage] = useState(null);
   const [backendImage, setbackendImage] = useState(null);

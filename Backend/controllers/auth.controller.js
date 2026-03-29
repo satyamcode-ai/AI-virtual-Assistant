@@ -1,6 +1,8 @@
 import genToken from "../config/token.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import transporter from '../config/nodeMailer.js';
+import { WELCOME_TEMPLATE } from '../config/emailTemplate.js';
 
 export const signUP = async (req, res) => {
   try {
@@ -31,6 +33,15 @@ export const signUP = async (req, res) => {
       sameSite: "strict",
       secure: true
     });
+
+    const mailOptions = {
+            from: process.env.SENDER_EMAIL,
+            to: email,
+            subject: 'Welcome to Our Service',
+            html: WELCOME_TEMPLATE.replace("{{name}}", `Hi ${name},`)
+        };
+
+        await transporter.sendMail(mailOptions);
 
     return res.status(201).json(user);
   } catch (error) {

@@ -14,45 +14,45 @@ const UserContext = ({ children }) => {
   const [loading, setloading] = useState(false);
   const [resultData, setresultData] = useState("");
   const [voiceGender, setVoiceGender] = useState("Female");
-  
+
   const resetChat = () => {
     setresultData([]);
     setloading(false);
   };
 
   useEffect(() => {
-  // Load history on mount
-  const savedPrompts = JSON.parse(localStorage.getItem("userPromptHistory"));
-  if (savedPrompts) {
-    setprevPrompts(savedPrompts);
-  }
-}, []);
+    // Load history on mount
+    const savedPrompts = JSON.parse(localStorage.getItem("userPromptHistory"));
+    if (savedPrompts) {
+      setprevPrompts(savedPrompts);
+    }
+  }, []);
 
-useEffect(() => {
-  // Save history whenever prevPrompts changes
-  localStorage.setItem("userPromptHistory", JSON.stringify(prevPrompts));
-}, [prevPrompts]);
+  useEffect(() => {
+    // Save history whenever prevPrompts changes
+    localStorage.setItem("userPromptHistory", JSON.stringify(prevPrompts));
+  }, [prevPrompts]);
 
 
   const setStopGenerating = (value) => {
-  stopGeneratingRef.current = value;
-  if (value) {
-    // Clear all pending timeouts
-    timeouts.current.forEach(clearTimeout);
-    timeouts.current = [];
-  }
-};
+    stopGeneratingRef.current = value;
+    if (value) {
+      // Clear all pending timeouts
+      timeouts.current.forEach(clearTimeout);
+      timeouts.current = [];
+    }
+  };
 
 
 
   const delayPara = (index, nextWord) => {
-  const timeoutId = setTimeout(() => {
-    if (stopGeneratingRef.current) return;
-    setresultData((prev) => prev + nextWord);
-  }, 75 * index);
+    const timeoutId = setTimeout(() => {
+      if (stopGeneratingRef.current) return;
+      setresultData((prev) => prev + nextWord);
+    }, 75 * index);
 
-  timeouts.current.push(timeoutId);
-};
+    timeouts.current.push(timeoutId);
+  };
 
 
 
@@ -86,17 +86,15 @@ useEffect(() => {
     setloading(false);
     setinput("");
     setprevPrompts((prev) => [
-  ...prev,
-  { text: input, timestamp: new Date().toISOString() },
-]);
+      ...prev,
+      { text: input, timestamp: new Date().toISOString() },
+    ]);
 
   };
 
-<<<<<<< HEAD
-  const serverUrl = "http://localhost:3000";
 =======
   const serverUrl = "https://ai-virtual-assistant-j7qg.vercel.app";
->>>>>>> 87bbb199c5ada5576202365e63b1ec2fde67e861
+
   const [userData, setuserData] = useState(null);
   const [frontendImage, setfrontendImage] = useState(null);
   const [backendImage, setbackendImage] = useState(null);
@@ -116,7 +114,7 @@ useEffect(() => {
 
   const getGeminiResponse = async (command) => {
     try {
-      const result = await axios.post(`${serverUrl}/api/user/asktoassistant`,{command},{withCredentials : true})
+      const result = await axios.post(`${serverUrl}/api/user/asktoassistant`, { command }, { withCredentials: true })
       return result.data
     } catch (error) {
       console.log(error)
@@ -140,7 +138,7 @@ useEffect(() => {
     resultData,
     onSent,
     setStopGenerating,
-  stopGenerating: stopGeneratingRef.current,
+    stopGenerating: stopGeneratingRef.current,
     resetChat,
     voiceGender, setVoiceGender,
 
